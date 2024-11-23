@@ -76,4 +76,14 @@ function createImageMarkup(image) {
   img.src = image.preview;
   img.dataSource = image.original;
   img.alt = image.description;
+  li.appendChild(img);
+
+  return li;
 }
+const fragment = document.createDocumentFragment();
+images.forEach((image) => {
+  const li = createImageMarkup(image);
+  fragment.appendChild(li);
+});
+
+gallery.appendChild(fragment);
