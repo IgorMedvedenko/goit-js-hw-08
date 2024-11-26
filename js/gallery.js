@@ -74,9 +74,10 @@ function createImageMarkup(image) {
   const img = document.createElement(`img`);
   img.classList.add(`gallery-image`);
   img.src = image.preview;
-  img.dataSource = image.original;
+  img.dataset.source = image.original;
   img.alt = image.description;
-  li.appendChild(img);
+  li.appendChild(a);
+  a.appendChild(img);
 
   return li;
 }
@@ -87,3 +88,11 @@ images.forEach((image) => {
 });
 
 gallery.appendChild(fragment);
+
+li.forEach((item) => {
+  const a = item.querySelector(`.gallery-link`);
+  a.addEventListener(`click`, (event) => {
+    event.preventDefault();
+    // const largeImageSrc = event.target.dataset.sourse;
+  });
+});
