@@ -86,13 +86,13 @@ images.forEach((image) => {
   const li = createImageMarkup(image);
   fragment.appendChild(li);
 });
-
 gallery.appendChild(fragment);
 
-li.forEach((item) => {
-  const a = item.querySelector(`.gallery-link`);
-  a.addEventListener(`click`, (event) => {
-    event.preventDefault();
-    // const largeImageSrc = event.target.dataset.sourse;
-  });
-});
+function openModal(event) {
+  event.preventDefault();
+  const instance = basicLightbox.create(
+    `<img src="${event.target.dataset.source}" width="800">`
+  );
+  instance.show();
+}
+gallery.addEventListener(`click`, openModal);
